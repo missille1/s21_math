@@ -23,14 +23,16 @@ s21_math.a:
 	ranlib $(library)
 	rm s21_math.o
 
+
 test: s21_math.a
 	$(gcc) $(flags) $(test_file) $(library) -o $(out_file) $(check_flag)
 	./s21_math
 
+
 gcov_report: s21_math.a
 	$(gcc) $(flags) $(gcov_flags) $(test_file) $(math_file) -o $(out_file) $(check_flag)
 	./s21_math  
-	gcov *.c
+# gcov *.c
 	lcov -d . -o gcov_report.info -c --no-external
 	genhtml -o report gcov_report.info
 	open report/index.html  
@@ -41,6 +43,7 @@ clean:
 	rm -f $(out_file)
 	make rm_report
 	make rm_gcov
+	rm -rf s21_math.o, .clang-format
 
 rebuild:
 	make clean
@@ -56,7 +59,7 @@ rm_report:
 	rm -rf report
 
 clang:
-	cp ../materials/linters/.clang-format ./
+	cp ../materials/.clang-format ./
 	clang-format -i *.c *.h
 
 format_check:

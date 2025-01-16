@@ -27,3 +27,9 @@ C mathematical operations are a group of functions in the standard library of th
 | 13 | `long double sin(double x)` | computes sine |
 | 14 | `long double sqrt(double x)` | computes square root |
 | 15 | `long double tan(double x)` | computes tangent |  
+
+
+#### Run
+```
+make
+```
